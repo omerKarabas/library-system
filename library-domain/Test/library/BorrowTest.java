@@ -12,6 +12,7 @@ public class BorrowTest {
 	void test() {
 		
 	var fake = new Borrow.Builder()
+			.borrowId("1")
 			.identityNo("11515")
 			.bookId(26)
 			.deadline(02, 03, 2021)
@@ -20,6 +21,7 @@ public class BorrowTest {
 			.borrowCounter(0)
 			.build();
 	
+	assertEquals("1",fake.getBorrowId().getId());
 	assertEquals("11515",fake.getIdentityNo().getIdentityNo());
 	assertEquals(26,fake.getBookId().getBookId());
 	assertEquals(02,fake.getDeadline().getDay());
