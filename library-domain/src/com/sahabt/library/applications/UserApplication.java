@@ -11,6 +11,9 @@ public interface UserApplication {
 	Optional<User> removeUser(IdentityNo identityNo );
 	Optional<User> editUser(User user);
 	Optional<User> getInformationUser(IdentityNo identityNo);
+	Optional<User> getInformationUser(IdentityNo identityNo);
+	Optional<User> getInformationUser(IdentityNo identityNo);
+	Optional<User> getInformationUser(IdentityNo identityNo);
 	
 
 }
