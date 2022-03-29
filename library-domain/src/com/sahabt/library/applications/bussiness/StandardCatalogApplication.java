@@ -32,7 +32,7 @@ public class StandardCatalogApplication implements CatalogApplication {
 	}
 
 	@Override
-	public Optional<Catalog> editCatalog(BookId bookId, Catalog catalog) {
+	public Optional<Catalog> editCatalog(Catalog catalog) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -44,73 +44,71 @@ public class StandardCatalogApplication implements CatalogApplication {
 	}
 
 	@Override
-	public Optional<Catalog> findBookByIsbn(ISBN isbn) {
+	public Optional<Catalog> FindBookByIsbn(ISBN isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByAuthor(Author author) {
+	public Optional<Catalog> FindBookByAuthor(Author author) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByTitle(Title title) {
+	public Optional<Catalog> FindBookByTitle(Title title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPublishDate(PublishDate publishDate) {
+	public Optional<Catalog> FindBookByPublishDate(PublishDate publishDate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPublishigHouse(PublishingHouse publishingHouse) {
+	public Optional<Catalog> FindBookByPublishigHouse(PublishingHouse publishingHouse) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByLanguage(Language language) {
+	public Optional<Catalog> FindBookByLanguage(Language language) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByType(Type type) {
+	public Optional<Catalog> FindBookByType(Type type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByTopic(Topic topic) {
+	public Optional<Catalog> FindBookByTopic(Topic topic) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByUseTarget(UseTarget useTarget) {
+	public Optional<Catalog> FindBookByUseTarget(UseTarget useTarget) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPeriodical(Periodical periodical) {
+	public Optional<Catalog> FindBookByPeriodical(Periodical periodical) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<Catalog> findBookByAvailable(Available available) {
+	public Optional<Catalog> FindBookByAvailable(Available available) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
 
 	
 

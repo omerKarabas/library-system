@@ -6,6 +6,7 @@ import com.sahabt.library.domain.user.IdentityNo;
 @Aggregate(id = "")
 public class Borrow {
 
+	private BorrowId borrowId;
 	private IdentityNo identityNo;
 	private BookId bookId;
 	private Deadline deadline;
@@ -14,6 +15,7 @@ public class Borrow {
 	private BorrowCounter borrowCounter;
 
 	public Borrow(Builder builder) {
+		this.borrowId= builder.borrowId;
 		this.identityNo = builder.identityNo;
 		this.bookId = builder.bookId;
 		this.deadline = builder.deadline;
@@ -71,7 +73,17 @@ public class Borrow {
 		this.borrowCounter = borrowCounter;
 	}
 
+	public BorrowId getBorrowId() {
+		return borrowId;
+	}
+
+	public void setBorrowId(BorrowId borrowId) {
+		this.borrowId = borrowId;
+	}
+
+
 	public static class Builder {
+		private BorrowId borrowId;
 		private IdentityNo identityNo;
 		private BookId bookId;
 		private Deadline deadline;
@@ -81,6 +93,11 @@ public class Borrow {
 
 		public Builder identityNo(String identityNo) {
 			this.identityNo = IdentityNo.of(identityNo);
+			return this;
+		}
+		
+		public Builder borrowId(String borrowId) {
+			this.borrowId = BorrowId.of(borrowId);
 			return this;
 		}
 
