@@ -20,17 +20,17 @@ public interface CatalogApplication {
 
 	Optional<Catalog> addCatalog(Catalog catalog);
 	Optional<Catalog> removeCatalog(BookId bookId);
-	Optional<Catalog> editCatalog(BookId bookId, Catalog catalog);
+	Optional<Catalog> editCatalog(Catalog catalog);
 	Optional<Catalog> getInformationBook(BookId bookId);
-	Optional<Catalog> findBookByIsbn(ISBN isbn);
-	Optional<Catalog> findBookByAuthor(Author author);
-	Optional<Catalog> findBookByTitle(Title title);
-	Optional<Catalog> findBookByPublishDate(PublishDate publishDate);
-	Optional<Catalog> findBookByPublishigHouse(PublishingHouse publishingHouse);
-	Optional<Catalog> findBookByLanguage(Language language);
-	Optional<Catalog> findBookByType(Type type);
-	Optional<Catalog> findBookByTopic(Topic topic);
-	Optional<Catalog> findBookByUseTarget(UseTarget useTarget);
-	Optional<Catalog> findBookByPeriodical(Periodical periodical);
-	Optional<Catalog> findBookByAvailable(Available available);
+	Optional<Catalog> FindBookByIsbn(ISBN isbn);
+	Optional<Catalog> FindBookByAuthor(Author author);
+	Optional<Catalog> FindBookByTitle(Title title);
+	Optional<Catalog> FindBookByPublishDate(PublishDate publishDate);
+	Optional<Catalog> FindBookByPublishigHouse(PublishingHouse publishingHouse);
+	Optional<Catalog> FindBookByLanguage(Language language);
+	Optional<Catalog> FindBookByType(Type type);
+	Optional<Catalog> FindBookByTopic(Topic topic);
+	Optional<Catalog> FindBookByUseTarget(UseTarget useTarget);
+	Optional<Catalog> FindBookByPeriodical(Periodical periodical);
+	Optional<Catalog> FindBookByAvailable(Available available);
 }
