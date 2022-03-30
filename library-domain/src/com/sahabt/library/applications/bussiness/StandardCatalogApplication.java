@@ -3,17 +3,13 @@ package com.sahabt.library.applications.bussiness;
 import java.util.Optional;
 
 import com.sahabt.library.applications.CatalogApplication;
-import com.sahabt.library.applications.bussiness.event.catalog.CatalogAddEvent;
-import com.sahabt.library.applications.bussiness.event.catalog.CatalogEvent;
 import com.sahabt.library.applications.bussiness.event.catalog.CatalogRemovedEvent;
 import com.sahabt.library.domain.catalog.Author;
 import com.sahabt.library.domain.catalog.Available;
 import com.sahabt.library.domain.catalog.BookId;
 import com.sahabt.library.domain.catalog.Catalog;
-import com.sahabt.library.domain.catalog.Cover;
 import com.sahabt.library.domain.catalog.ISBN;
 import com.sahabt.library.domain.catalog.Language;
-import com.sahabt.library.domain.catalog.NumberOfPages;
 import com.sahabt.library.domain.catalog.Periodical;
 import com.sahabt.library.domain.catalog.PublishDate;
 import com.sahabt.library.domain.catalog.PublishingHouse;
