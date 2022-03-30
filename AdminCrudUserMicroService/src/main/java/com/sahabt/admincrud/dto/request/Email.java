@@ -1,4 +1,4 @@
-package com.sahabt.library.domain.admin;
+package com.sahabt.admincrud.dto.request;
 
 import java.util.Map;
 import java.util.Objects;
@@ -14,7 +14,7 @@ public class Email {
     
 	public static Email of(String email, EmailType emailType) {
 		
-		// Mail adresinin olup olmadýðý ile ilgili validation olmasý gerekiyor.
+		// Mail adresinin olup olmadï¿½ï¿½ï¿½ ile ilgili validation olmasï¿½ gerekiyor.
 		var newEmail = new Email(email, emailType);
 		return emailList.put(email,newEmail);
 	}
@@ -62,7 +62,6 @@ public class Email {
 	public String toString() {
 		return "Email [email=" + email + ", emailType=" + emailType + "]";
 	}
-
 
 	
 }

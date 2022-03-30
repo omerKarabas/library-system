@@ -1,6 +1,5 @@
-package com.sahabt.library.applications.bussiness;
+package com.sahabt.library.applications.bussiness.event.user;
 
-import com.sahabt.library.applications.bussiness.event.user.UserEvent;
 import com.sahabt.library.domain.user.IdentityNo;
 import com.sahabt.library.domain.user.User;
 
