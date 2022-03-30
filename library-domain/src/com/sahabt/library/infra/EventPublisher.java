@@ -20,6 +20,6 @@ public interface EventPublisher {
 	void userPublish(UserEvent userEvent);
 	void loginPublish(LoginEvent loginEvent);
 	void catalogPublish(CatalogEvent catalogEvent);
-	//void catalogAddEvent(CatalogAddEvent catalogAddEvent);
+	void catalogAddEvent(CatalogAddEvent catalogAddEvent);
 
 }

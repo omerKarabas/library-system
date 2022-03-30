@@ -3,6 +3,7 @@ package com.sahabt.library.applications.bussiness;
 import java.util.Optional;
 
 import com.sahabt.library.applications.CatalogApplication;
+import com.sahabt.library.applications.bussiness.event.catalog.CatalogAddEvent;
 import com.sahabt.library.applications.bussiness.event.catalog.CatalogRemovedEvent;
 import com.sahabt.library.domain.catalog.Author;
 import com.sahabt.library.domain.catalog.Available;
@@ -33,12 +34,12 @@ public class StandardCatalogApplication implements CatalogApplication {
 	}
 
 	@Override
-	public Optional<Catalog> addCatalog(Catalog catalog) {
-		var book = catalog.getBookId();
-		if(catalogRepository.exists(book))
+	public Optional<Catalog>addCatalog(Catalog catalog) {
+	
+		if(catalogRepository.exists(catalog.getBookId()))
 			return Optional.empty();
-		//eventPublisher.catalogAddEvent(new CatalogAddEvent(book));
-		return null; // Optional.of(catalogRepository.addCatalog(catalog));
+		eventPublisher.catalogAddEvent(new CatalogAddEvent(catalog));
+		return Optional.of(catalogRepository.addCatalog(catalog));
 	}
 
 	@Override

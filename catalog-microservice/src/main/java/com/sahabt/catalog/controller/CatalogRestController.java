@@ -1,7 +1,5 @@
 package com.sahabt.catalog.controller;
 
-import java.util.Optional;
-
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.context.annotation.RequestScope;
 import com.sahabt.catalog.dto.response.CatalogResponse;
 import com.sahabt.catalog.service.CatalogService;
 import com.sahabt.library.domain.catalog.Available;
-import com.sahabt.library.domain.catalog.Catalog;
 import com.sahabt.library.domain.catalog.Language;
 import com.sahabt.library.domain.catalog.Periodical;
 import com.sahabt.library.domain.catalog.PublishDate;
