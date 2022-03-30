@@ -23,6 +23,7 @@ public interface CatalogApplication {
 	Optional<Catalog> editCatalog(BookId bookId, Catalog catalog);
 	Optional<Catalog> getInformationBook(BookId bookId);
 	Optional<Catalog> findBookByIsbn(ISBN isbn);
+	Optional<Catalog> findBookByBookId(BookId bookId);
 	Optional<Catalog> findBookByAuthor(Author author);
 	Optional<Catalog> findBookByTitle(Title title);
 	Optional<Catalog> findBookByPublishDate(PublishDate publishDate);

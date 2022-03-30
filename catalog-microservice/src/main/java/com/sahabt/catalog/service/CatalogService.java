@@ -55,6 +55,11 @@ public class CatalogService {
 				.orElseThrow(() -> new IllegalArgumentException("There isn't book with book id"));
 		return modelMapper.map(getCatalog, CatalogResponse.class);
 	}
+	public CatalogResponse findBookByBookId(int bookId) {
+		var getCatalogWithBookId = catalogApplication.findBookByBookId(BookId.of(bookId))
+				.orElseThrow(() -> new IllegalArgumentException("There isn't book with  this book id"));
+		return modelMapper.map(getCatalogWithBookId, CatalogResponse.class);
+	}
 
 	public CatalogResponse findBookByIsbn(String isbn) {
 		var getCatalogForIsbn = catalogApplication.findBookByIsbn(ISBN.of(isbn))

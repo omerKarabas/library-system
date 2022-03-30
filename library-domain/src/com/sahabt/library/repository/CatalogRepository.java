@@ -18,11 +18,13 @@ import com.sahabt.library.domain.catalog.UseTarget;
 
 public interface CatalogRepository {
 
+	boolean exists (BookId bookId);
 	Optional<Catalog> addCatalog(Catalog catalog);
 	Optional<Catalog> removeCatalog(BookId bookId);
 	Optional<Catalog> editCatalog(BookId bookId, Catalog catalog);
 	Optional<Catalog> getInformationBook(BookId bookId);
 	Optional<Catalog> findBookByIsbn(ISBN isbn);
+	Optional<Catalog> findBookByBookId(BookId bookId);
 	Optional<Catalog> findBookByAuthor(Author author);
 	Optional<Catalog> findBookByTitle(Title title);
 	Optional<Catalog> findBookByPublishDate(PublishDate publishDate);

@@ -2,6 +2,8 @@ package com.sahabt.library.infra;
 
 import com.sahabt.library.applications.bussiness.event.booking.BookingEvent;
 import com.sahabt.library.applications.bussiness.event.borrow.BorrowEvent;
+import com.sahabt.library.applications.bussiness.event.catalog.CatalogAddEvent;
+import com.sahabt.library.applications.bussiness.event.catalog.CatalogEvent;
 import com.sahabt.library.applications.bussiness.event.creditcard.CreditCardEvent;
 import com.sahabt.library.applications.bussiness.event.login.LoginEvent;
 import com.sahabt.library.applications.bussiness.event.message.MessageEvent;
@@ -17,5 +19,7 @@ public interface EventPublisher {
 	void messagePublish(MessageEvent messageEvent);
 	void userPublish(UserEvent userEvent);
 	void loginPublish(LoginEvent loginEvent);
+	void catalogPublish(CatalogEvent catalogEvent);
+	//void catalogAddEvent(CatalogAddEvent catalogAddEvent);
 
 }
