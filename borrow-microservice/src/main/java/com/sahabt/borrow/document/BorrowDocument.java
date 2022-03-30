@@ -23,7 +23,8 @@ public class BorrowDocument {
 	@NotBlank
 	private String bookId;
 	
-	private String deadline; 
+	
+	private Deadline deadline; 
 	
 	private String date;
 	
@@ -49,14 +50,6 @@ public class BorrowDocument {
 
 	public void setBookId(String bookId) {
 		this.bookId = bookId;
-	}
-
-	public String getDeadline() {
-		return deadline;
-	}
-
-	public void setDeadline(String deadline) {
-		this.deadline = deadline;
 	}
 
 	public String getDate() {
@@ -92,6 +85,15 @@ public class BorrowDocument {
 	}
 
 	
+	
+	public Deadline getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(Deadline deadline) {
+		this.deadline = deadline;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(borrowId);

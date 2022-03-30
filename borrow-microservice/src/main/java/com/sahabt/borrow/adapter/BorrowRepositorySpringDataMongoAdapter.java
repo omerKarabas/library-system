@@ -1,5 +1,6 @@
 package com.sahabt.borrow.adapter;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -8,6 +9,7 @@ import com.sahabt.borrow.document.BorrowDocument;
 import com.sahabt.borrow.repository.BorrowDocumentRepository;
 import com.sahabt.library.domain.borrow.Borrow;
 import com.sahabt.library.domain.borrow.BorrowId;
+import com.sahabt.library.domain.borrow.IdentityNo;
 import com.sahabt.library.repository.BorrowRepository;
 
 public class BorrowRepositorySpringDataMongoAdapter implements BorrowRepository{
@@ -43,15 +45,36 @@ public class BorrowRepositorySpringDataMongoAdapter implements BorrowRepository{
 	}
 
 	@Override
-	public Optional<Borrow> findBorrowByIdentityNo(BorrowId borrowId) {
+	public Borrow updateBorrow(Borrow borrow) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 	@Override
-	public Borrow updateBorrow(Borrow borrow) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Borrow> findBorrowByBorrowId(BorrowId borrowId) {
+		var borrowDocument = borrowDocumentRepository.findById(borrowId.getId());
+		if (borrowDocument.isEmpty())
+			return Optional.empty();
+		return Optional.of(modelMapper.map(borrowDocument.get(), Borrow.class));
+	}
+	
+	@Override
+	public Optional<List<Borrow>> findBorrowsByIdentityNo(IdentityNo identity) {
+		var borrowDocument = borrowDocumentRepository.findAllBorrowByIdentity(identity.getIdentityNo());
+		if (borrowDocument.isEmpty())
+			return Optional.empty();
+		return Optional.of(modelMapper.map(borrowDocument.get(0), List<Borrow>.class));
+	}
+	
+	
+
+	@Override
+	public Optional<List<Borrow>> getAllBorrows() {
+		var borrowDocument = borrowDocumentRepository.findAll();
+		if (borrowDocument.isEmpty())
+			return Optional.empty();
+		return Optional.of(modelMapper.map(borrowDocument.get(0), Borrow.class));
 	}
 	
 

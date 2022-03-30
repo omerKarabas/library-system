@@ -1,9 +1,11 @@
 package com.sahabt.library.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.sahabt.library.domain.borrow.Borrow;
 import com.sahabt.library.domain.borrow.BorrowId;
+import com.sahabt.library.domain.borrow.IdentityNo;
 
 public interface BorrowRepository {
 	
@@ -13,9 +15,15 @@ public interface BorrowRepository {
 
 	Optional<Borrow> removeBorrow(BorrowId borrowId);
 
-	Optional<Borrow> findBorrowByIdentityNo(BorrowId borrowId);
+	Optional<List<Borrow>> findBorrowsByIdentityNo(IdentityNo identityNo);
+	
+	Optional<Borrow> findBorrowByBorrowId(BorrowId borrowId);
+	
+	Optional<List<Borrow>> getAllBorrows();
 	
 	Borrow updateBorrow(Borrow borrow);
+	
+	
 
 	
 
