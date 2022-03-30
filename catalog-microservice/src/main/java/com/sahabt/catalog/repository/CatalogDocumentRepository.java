@@ -1,7 +1,5 @@
 package com.sahabt.catalog.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.sahabt.catalog.document.CatalogDocument;
@@ -9,7 +7,6 @@ import com.sahabt.catalog.dto.response.CatalogResponse;
 import com.sahabt.library.domain.catalog.Author;
 import com.sahabt.library.domain.catalog.Available;
 import com.sahabt.library.domain.catalog.BookId;
-import com.sahabt.library.domain.catalog.Catalog;
 import com.sahabt.library.domain.catalog.ISBN;
 import com.sahabt.library.domain.catalog.Language;
 import com.sahabt.library.domain.catalog.Periodical;

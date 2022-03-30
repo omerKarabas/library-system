@@ -9,7 +9,7 @@ import com.sahabt.library.domain.catalog.Topic;
 import com.sahabt.library.domain.catalog.Type;
 import com.sahabt.library.domain.catalog.UseTarget;
 
-public class AddCatalogRequest {
+public class CatalogRequest {
 	
 	private int bookId;
 	private byte[] cover;
@@ -29,7 +29,7 @@ public class AddCatalogRequest {
 	private Periodical periodical; // Limited or unlimeted
 	private Available available;
 	
-	public AddCatalogRequest() {
+	public CatalogRequest() {
 		
 	}
 
@@ -171,14 +171,11 @@ public class AddCatalogRequest {
 
 	@Override
 	public String toString() {
-		return "AddCatalogRequest [bookId=" + bookId + ", cover=" + Arrays.toString(cover) + ", isbn=" + isbn
-				+ ", title=" + title + ", firstName=" + firstName + ", lastName=" + lastName + ", numberOfPages="
-				+ numberOfPages + ", day=" + day + ", mounth=" + mounth + ", year=" + year + ", publishingHouseName="
+		return "CatalogRequest [bookId=" + bookId + ", cover=" + Arrays.toString(cover) + ", isbn=" + isbn + ", title="
+				+ title + ", firstName=" + firstName + ", lastName=" + lastName + ", numberOfPages=" + numberOfPages
+				+ ", day=" + day + ", mounth=" + mounth + ", year=" + year + ", publishingHouseName="
 				+ publishingHouseName + ", language=" + language + ", type=" + type + ", topic=" + topic
 				+ ", useTarget=" + useTarget + ", periodical=" + periodical + ", available=" + available + "]";
 	}
-	
-	
-	
-	
+
 }

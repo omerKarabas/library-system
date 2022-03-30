@@ -3,7 +3,7 @@ package com.sahabt.catalog.service;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.sahabt.catalog.dto.request.AddCatalogRequest;
+import com.sahabt.catalog.dto.request.CatalogRequest;
 import com.sahabt.catalog.dto.response.CatalogResponse;
 import com.sahabt.library.applications.CatalogApplication;
 import com.sahabt.library.domain.catalog.Author;
@@ -31,7 +31,7 @@ public class CatalogService {
 		this.modelMapper = modelMapper;
 	}
 
-	public CatalogResponse addCatalog(AddCatalogRequest request) {
+	public CatalogResponse addCatalog(CatalogRequest request) {
 		var catalog = modelMapper.map(request, Catalog.class);
 		var addCatalog = catalogApplication.addCatalog(catalog)
 				.orElseThrow(() -> new IllegalArgumentException("Already exisiting catalog."));
