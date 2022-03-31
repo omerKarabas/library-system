@@ -1,5 +1,8 @@
 package com.sahabt.borrow.dto.response;
 
+import com.sahabt.library.domain.borrow.Deadline;
+import com.sahabt.library.domain.borrow.Delivery;
+
 public class BorrowResponse {
 
 	private int borrowId;
@@ -19,6 +22,22 @@ public class BorrowResponse {
 		this.identity = identity;
 	}
 
+
+	public Deadline getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(Deadline deadline) {
+		this.deadline = deadline;
+	}
+
+	public Delivery getDate() {
+		return date;
+	}
+
+	public void setDate(Delivery date) {
+		this.date = date;
+	}
 
 	public int getPunishment() {
 		return punishment;

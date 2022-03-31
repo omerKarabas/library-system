@@ -3,6 +3,8 @@ package com.sahabt.borrow.dto.request;
 import javax.validation.constraints.NotBlank;
 
 import com.sahabt.borrow.validation.TcKimlikNo;
+import com.sahabt.library.domain.borrow.Deadline;
+import com.sahabt.library.domain.borrow.Delivery;
 
 public class AddBorrowRequest {
 	

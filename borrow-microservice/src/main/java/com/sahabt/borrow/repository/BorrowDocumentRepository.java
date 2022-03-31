@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.sahabt.borrow.document.BorrowDocument;
 
-public interface BorrowDocumentRepository extends MongoRepository<BorrowDocument, String>{
+public interface BorrowDocumentRepository extends MongoRepository<BorrowDocument, Integer>{
 
 	List<BorrowDocument> findAllBorrowByIdentity(String identity);
 

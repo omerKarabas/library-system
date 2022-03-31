@@ -53,7 +53,9 @@ public class BorrowRepositorySpringDataMongoAdapter implements BorrowRepository{
 	
 	@Override
 	public Optional<Borrow> findBorrowByBorrowId(BorrowId borrowId) {
+
 		var borrowDocument = borrowDocumentRepository.findById(borrowId.getId());
+		
 		if (borrowDocument.isEmpty())
 			return Optional.empty();
 		return Optional.of(modelMapper.map(borrowDocument.get(), Borrow.class));

@@ -13,7 +13,6 @@ public final class BorrowId {
 		return new BorrowId(borrowId);
 	}
 	private BorrowId(int borrowId) {
-		super();
 		this.id = borrowId;
 	}
 
@@ -37,11 +36,12 @@ public final class BorrowId {
 		BorrowId other = (BorrowId) obj;
 		return id == other.id;
 	}
-
 	@Override
 	public String toString() {
-		return "BorrowId [borrowId=" + id + "]";
+		return "BorrowId [id=" + id + "]";
 	}
+
+	
 	
 	
 }

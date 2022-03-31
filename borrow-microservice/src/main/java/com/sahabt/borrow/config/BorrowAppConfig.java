@@ -11,7 +11,7 @@ import com.sahabt.library.repository.BorrowRepository;
 @Configuration
 public class BorrowAppConfig {
 	@Bean
-	public BorrowApplication createHrApplication(
+	public BorrowApplication createApBrplication(
 			BorrowRepository employeeRepository, 
 			EventPublisher eventPublisher) {
 		return new StandardBorrowApplication(employeeRepository, eventPublisher);

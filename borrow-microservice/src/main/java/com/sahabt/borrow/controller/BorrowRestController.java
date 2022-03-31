@@ -46,13 +46,13 @@ public class BorrowRestController {
 	
 	@DeleteMapping("{identityNo}")
 	public BorrowResponse fireEmployee(
-			@PathVariable @TcKimlikNo String identityNo) {
+			@PathVariable @TcKimlikNo int identityNo) {
 		return borrowService.removeBorrow(identityNo);
 	}
 	
 	@GetMapping("{identityNo}")
 	public BorrowResponse getEmployeeInfo(
-			@PathVariable @TcKimlikNo String identityNo, HttpServletRequest request) {
+			@PathVariable @TcKimlikNo int identityNo, HttpServletRequest request) {
 		logger.info("Receiving a request from the session {}.",request.getSession().getId());
 		return borrowService.getInformationBorrow(identityNo);
 	}

@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.sahabt.borrow.validation.TcKimlikNo;
+import com.sahabt.library.domain.borrow.Deadline;
+import com.sahabt.library.domain.borrow.Delivery;
 
 
 

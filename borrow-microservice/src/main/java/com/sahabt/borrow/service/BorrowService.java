@@ -29,13 +29,13 @@ public class BorrowService {
 		return modelMapper.map(addedBorrow, BorrowResponse.class);
 	}
 	
-	public BorrowResponse removeBorrow(String borrowId) {
+	public BorrowResponse removeBorrow(int borrowId) {
 		var removedBorrow = borrowApplication.removeBorrow(BorrowId.of(borrowId))				
 				.orElseThrow(() -> new IllegalArgumentException("Borrow does not exist."));
 		return modelMapper.map(removedBorrow, BorrowResponse.class);
 	}
 	
-	public BorrowResponse getInformationBorrow(String borrowId) {
+	public BorrowResponse getInformationBorrow(int borrowId) {
 		var borrow = borrowApplication.getInformationBorrow(BorrowId.of(borrowId))				
 				.orElseThrow(() -> new IllegalArgumentException("Borrow does not exist."));
 		return modelMapper.map(borrow, BorrowResponse.class);
