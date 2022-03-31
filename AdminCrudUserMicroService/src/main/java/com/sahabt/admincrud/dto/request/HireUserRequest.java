@@ -15,6 +15,11 @@ public class HireUserRequest {
 	private Status status; // Status include main role as teacher, student
 	private Contact contact;
 	private Faculty faculty;
+	
+	
+	public void setIdentityNo(String identityNo) {
+		this.identityNo = identityNo;
+	}
 	/**
 	 * @return the fullName
 	 */
@@ -113,6 +118,7 @@ public class HireUserRequest {
 		return "HireUserRequest [identityNo=" + identityNo + ", fullName=" + fullName + ", birthDate=" + birthDate
 				+ ", photo=" + photo + ", status=" + status + ", contact=" + contact + ", faculty=" + faculty + "]";
 	}
+
 
 
 	

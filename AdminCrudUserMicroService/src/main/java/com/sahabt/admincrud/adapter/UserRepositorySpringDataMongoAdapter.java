@@ -22,6 +22,7 @@ public class UserRepositorySpringDataMongoAdapter implements UserRepository {
 	 */
 	public UserRepositorySpringDataMongoAdapter(userDocumentRepository userDocumentRepository,
 			ModelMapper modelMapper) {
+		System.out.println("adapter()");
 		this.userDocumentRepository = userDocumentRepository;
 		this.modelMapper = modelMapper;
 	}

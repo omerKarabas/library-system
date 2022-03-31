@@ -22,13 +22,13 @@ public class UserService {
 	 * @param modelMapper
 	 */
 	public UserService(UserApplication userApplication, ModelMapper modelMapper) {
-		super();
 		this.userApplication = userApplication;
 		this.modelMapper = modelMapper;
 	}
 
 
 	public UserResponse createUser(HireUserRequest request) {
+		
 		var user= modelMapper.map(request, User.class);
 		var hireUser=userApplication.addUser(user);
 		return modelMapper.map(hireUser, UserResponse.class);
