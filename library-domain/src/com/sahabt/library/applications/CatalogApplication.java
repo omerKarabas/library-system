@@ -1,5 +1,6 @@
 package com.sahabt.library.applications;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.sahabt.library.domain.catalog.Author;
@@ -20,17 +21,18 @@ public interface CatalogApplication {
 
 	Optional<Catalog> addCatalog(Catalog catalog);
 	Optional<Catalog> removeCatalog(BookId bookId);
-	Optional<Catalog> editCatalog(Catalog catalog);
+	Optional<Catalog> editCatalog(BookId bookId, Catalog catalog);
 	Optional<Catalog> getInformationBook(BookId bookId);
-	Optional<Catalog> FindBookByIsbn(ISBN isbn);
-	Optional<Catalog> FindBookByAuthor(Author author);
-	Optional<Catalog> FindBookByTitle(Title title);
-	Optional<Catalog> FindBookByPublishDate(PublishDate publishDate);
-	Optional<Catalog> FindBookByPublishigHouse(PublishingHouse publishingHouse);
-	Optional<Catalog> FindBookByLanguage(Language language);
-	Optional<Catalog> FindBookByType(Type type);
-	Optional<Catalog> FindBookByTopic(Topic topic);
-	Optional<Catalog> FindBookByUseTarget(UseTarget useTarget);
-	Optional<Catalog> FindBookByPeriodical(Periodical periodical);
-	Optional<Catalog> FindBookByAvailable(Available available);
+	Optional<Catalog> findCatalogByBookId(BookId bookId);
+	List<Catalog> findAllCatalogByIsbn(ISBN isbn);
+	List<Catalog> findAllCatalogByAuthor(Author author);
+	List<Catalog> findAllCatalogByTitle(Title title);
+	List<Catalog> findAllCatalogByPublishDate(PublishDate publishDate);
+	List<Catalog> findAllCatalogByPublishigHouse(PublishingHouse publishingHouse);
+	List<Catalog> findAllCatalogByLanguage(Language language);
+	List<Catalog> findAllCatalogByType(Type type);
+	List<Catalog> findAllCatalogByTopic(Topic topic);
+	List<Catalog> findAllCatalogByUseTarget(UseTarget useTarget);
+	List<Catalog> findAllCatalogByPeriodical(Periodical periodical);
+	List<Catalog> findAllCatalogByAvailable(Available available);
 }
