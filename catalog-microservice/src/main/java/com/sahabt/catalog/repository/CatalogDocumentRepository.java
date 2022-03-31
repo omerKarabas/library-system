@@ -7,6 +7,7 @@ import com.sahabt.catalog.dto.response.CatalogResponse;
 import com.sahabt.library.domain.catalog.Author;
 import com.sahabt.library.domain.catalog.Available;
 import com.sahabt.library.domain.catalog.BookId;
+import com.sahabt.library.domain.catalog.Catalog;
 import com.sahabt.library.domain.catalog.ISBN;
 import com.sahabt.library.domain.catalog.Language;
 import com.sahabt.library.domain.catalog.Periodical;
@@ -22,16 +23,16 @@ public interface CatalogDocumentRepository extends MongoRepository<CatalogDocume
 	boolean exists (BookId bookId);
 	
 	CatalogResponse getInformationBook(BookId bookId);
-    CatalogResponse findBookByIsbn(ISBN isbn);
-    CatalogResponse findBookByBookId(BookId bookId);
-    CatalogResponse findBookByAuthor(Author author);
-    CatalogResponse findBookByTitle(Title title);
-    CatalogResponse findBookByPublishDate(PublishDate publishDate);
-    CatalogResponse findBookByPublishigHouse(PublishingHouse publishingHouse);
-    CatalogResponse findBookByLanguage(Language language);
-    CatalogResponse findBookByType(Type type);
-    CatalogResponse findBookByTopic(Topic topic);
-    CatalogResponse findBookByUseTarget(UseTarget useTarget);
-    CatalogResponse findBookByPeriodical(Periodical periodical);
-    CatalogResponse findBookByAvailable(Available available);
+    Catalog findBookByIsbn(ISBN isbn);
+    Catalog findBookByBookId(BookId bookId);
+    Catalog findAllCatalogByAuthor(Author author);
+    Catalog findAllCatalogByTitle(Title title);
+    Catalog findAllCatalogByPublishDate(PublishDate publishDate);
+    Catalog findAllCatalogByPublishigHouse(PublishingHouse publishingHouse);
+    Catalog findAllCatalogByLanguage(Language language);
+    Catalog findAllCatalogByType(Type type);
+    Catalog findAllCatalogByTopic(Topic topic);
+    Catalog findAllCatalogByUseTarget(UseTarget useTarget);
+    Catalog findAllCatalogByPeriodical(Periodical periodical);
+    Catalog findAllCatalogByAvailable(Available available);
 }

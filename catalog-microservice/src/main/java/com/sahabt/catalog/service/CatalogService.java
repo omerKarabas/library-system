@@ -1,5 +1,7 @@
 package com.sahabt.catalog.service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +33,11 @@ public class CatalogService {
 		this.modelMapper = modelMapper;
 	}
 
-	public CatalogResponse addCatalog(CatalogRequest request) {
+	public Catalog addCatalog(CatalogRequest request) {
 		var catalog = modelMapper.map(request, Catalog.class);
 		var addCatalog = catalogApplication.addCatalog(catalog)
 				.orElseThrow(() -> new IllegalArgumentException("Already exisiting catalog."));
-		return modelMapper.map(addCatalog, CatalogResponse.class);
+		return modelMapper.map(addCatalog, Catalog.class);
 	}
 
 	public CatalogResponse removeCatalog(int bookId) {
@@ -55,84 +57,95 @@ public class CatalogService {
 				.orElseThrow(() -> new IllegalArgumentException("There isn't book with book id"));
 		return modelMapper.map(getCatalog, CatalogResponse.class);
 	}
-	public CatalogResponse findBookByBookId(int bookId) {
-		var getCatalogWithBookId = catalogApplication.findBookByBookId(BookId.of(bookId))
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with  this book id"));
-		return modelMapper.map(getCatalogWithBookId, CatalogResponse.class);
+	public Catalog findCatalogByBookId(BookId bookId) {
+		
+		var getCatalog = catalogApplication.findCatalogByBookId(bookId);
+		return   modelMapper.map(getCatalog, Catalog.class);
+				
+		
 	}
 
-	public CatalogResponse findBookByIsbn(String isbn) {
-		var getCatalogForIsbn = catalogApplication.findBookByIsbn(ISBN.of(isbn))
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this isbn"));
-		return modelMapper.map(getCatalogForIsbn, CatalogResponse.class);
+	public List<Catalog> findAllCatalogByIsbn(ISBN isbn) {
+		return   catalogApplication.findAllCatalogByIsbn(isbn)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
-	public CatalogResponse findBookByAuthor(String firstName, String lastName) {
-		var getCatalogForAuthor = catalogApplication.findBookByAuthor(Author.of(firstName, lastName))
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book for  this author name"));
-		return modelMapper.map(getCatalogForAuthor, CatalogResponse.class);
+	public List<Catalog> findAllCatalogByAuthor(Author author) {
+		return   catalogApplication.findAllCatalogByAuthor(author)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
-	public CatalogResponse findBookByTitle(String title) {
-		var getCatalogForTittle = catalogApplication.findBookByTitle(Title.of(title))
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this title"));
-		return modelMapper.map(getCatalogForTittle, CatalogResponse.class);
+	public List<Catalog> findAllCatalogByTitle(Title title) {
+		return   catalogApplication.findAllCatalogByTitle(title)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
-	public CatalogResponse findBookByPublishDate(PublishDate publishDate) {
-		var getCatalogForPublishDate = catalogApplication.findBookByPublishDate(publishDate)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this publishDate"));
-		return modelMapper.map(getCatalogForPublishDate, CatalogResponse.class);
+	public List<Catalog> findAllCatalogByPublishDate(PublishDate publishDate) {
+		return   catalogApplication.findAllCatalogByPublishDate(publishDate)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
-	public CatalogResponse findBookByPublishigHouse(String publishingHouseName) {
+	public List<Catalog> findAllCatalogByPublishigHouse(PublishingHouse publishingHouseName) {
 		
-		var getCatalogForPublishinghouse = catalogApplication.findBookByPublishigHouse(PublishingHouse.of(publishingHouseName))
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this publishing house"));
-		return modelMapper.map(getCatalogForPublishinghouse, CatalogResponse.class);
+		return   catalogApplication.findAllCatalogByPublishigHouse(publishingHouseName)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 	
-	public CatalogResponse findBookByLanguage(Language language) {
+	public List<Catalog> findAllCatalogByLanguage(Language language) {
 		
-		var getCatalogForLanguage = catalogApplication.findBookByLanguage(language)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this language"));
-		return modelMapper.map(getCatalogForLanguage, CatalogResponse.class);
+		return   catalogApplication.findAllCatalogByLanguage(language)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
-	public CatalogResponse findBookByType(Type type) {
+	public List<Catalog> findAllCatalogByType(Type type) {
 		
-		var getCatalogForType = catalogApplication.findBookByType(type)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this type"));
-		return modelMapper.map(getCatalogForType, CatalogResponse.class);
+		return  catalogApplication.findAllCatalogByType(type)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 	
-	public CatalogResponse findBookByTopic(Topic topic) {
+	public List<Catalog> findAllCatalogByTopic(Topic topic) {
 		
-		var getCatalogForTopic = catalogApplication.findBookByTopic(topic)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this type"));
-		return modelMapper.map(getCatalogForTopic, CatalogResponse.class);
+		return   catalogApplication.findAllCatalogByTopic(topic)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 	
-	public CatalogResponse findBookByUseTarget(UseTarget useTarget) {
+	public List<Catalog> findAllCatalogByUseTarget(UseTarget useTarget) {
 		
-		var getCatalogForUseTarget = catalogApplication.findBookByUseTarget(useTarget)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this use target"));
-		return modelMapper.map(getCatalogForUseTarget, CatalogResponse.class);
+		return   catalogApplication.findAllCatalogByUseTarget(useTarget)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 	
-	public CatalogResponse findBookByPeriodical(Periodical periodical) {
-		
-		var getCatalogForPeriodical = catalogApplication.findBookByPeriodical(periodical)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this periodical"));
-		return modelMapper.map(getCatalogForPeriodical, CatalogResponse.class);
+	public List<Catalog> findAllCatalogByPeriodical(Periodical periodical) {
+		return   catalogApplication.findAllCatalogByPeriodical(periodical)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 	
-	public CatalogResponse findBookByAvailable(Available available) {
+	public List<Catalog> findAllCatalogByAvailable(Available available) {
 		
-		var getCatalogForPeriodical = catalogApplication.findBookByAvailable(available)
-				.orElseThrow(() -> new IllegalArgumentException("There isn't book with this periodical"));
-		return modelMapper.map(getCatalogForPeriodical, CatalogResponse.class);
-	}
-	
-	
+		return   catalogApplication.findAllCatalogByAvailable(available)
+				.stream()
+				.map(cat -> modelMapper.map(cat, Catalog.class))
+				.toList();
+	    
+	}	
 }

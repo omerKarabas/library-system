@@ -1,5 +1,6 @@
 package com.sahabt.library.applications.bussiness;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.sahabt.library.applications.CatalogApplication;
@@ -53,26 +54,27 @@ public class StandardCatalogApplication implements CatalogApplication {
 
 	@Override
 	public Optional<Catalog> editCatalog(BookId bookId, Catalog catalog) {
-		var bookForUpdate = catalogRepository.findBookByBookId(bookId);
-			bookForUpdate.stream().forEach(
-					updatedBook -> {
-						updatedBook.setBookId(catalog.getBookId());
-						updatedBook.setCover(catalog.getCover());
-						updatedBook.setIsbn(catalog.getIsbn());
-						updatedBook.setAuthor(catalog.getAuthor());
-						updatedBook.setTitle(catalog.getTitle());
-						updatedBook.setNumberOfPages(catalog.getNumberOfPages());
-						updatedBook.setPublishDate(catalog.getPublishDate());
-						updatedBook.setPublishingHouse(catalog.getPublishingHouse());	
-						updatedBook.setLanguage(catalog.getLanguage());
-						updatedBook.setType(catalog.getType());
-						updatedBook.setTopic(catalog.getTopic());
-						updatedBook.setUseTarget(catalog.getUseTarget());
-						updatedBook.setPeriodical(catalog.getPeriodical());
-						updatedBook.setAvailable(catalog.getAvailable());
-					});
-		
-		return bookForUpdate;
+//		var bookForUpdate = catalogRepository.findBookByBookId(bookId);
+//			bookForUpdate.stream().forEach(
+//					updatedBook -> {
+//						updatedBook.setBookId(catalog.getBookId());
+//						updatedBook.setCover(catalog.getCover());
+//						updatedBook.setIsbn(catalog.getIsbn());
+//						updatedBook.setAuthor(catalog.getAuthor());
+//						updatedBook.setTitle(catalog.getTitle());
+//						updatedBook.setNumberOfPages(catalog.getNumberOfPages());
+//						updatedBook.setPublishDate(catalog.getPublishDate());
+//						updatedBook.setPublishingHouse(catalog.getPublishingHouse());	
+//						updatedBook.setLanguage(catalog.getLanguage());
+//						updatedBook.setType(catalog.getType());
+//						updatedBook.setTopic(catalog.getTopic());
+//						updatedBook.setUseTarget(catalog.getUseTarget());
+//						updatedBook.setPeriodical(catalog.getPeriodical());
+//						updatedBook.setAvailable(catalog.getAvailable());
+//					});
+//		
+//		return bookForUpdate;
+		return null;
 	}
 
 	@Override
@@ -81,69 +83,64 @@ public class StandardCatalogApplication implements CatalogApplication {
 	}
 
 	@Override
-	public Optional<Catalog> findBookByIsbn(ISBN isbn) {
-		return catalogRepository.findBookByIsbn(isbn);
+	public List<Catalog> findAllCatalogByIsbn(ISBN isbn) {
+		return catalogRepository.findAllCatalogByIsbn(isbn);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByAuthor(Author author) {
-		return  catalogRepository.findBookByAuthor(author);
+	public List<Catalog> findAllCatalogByAuthor(Author author) {
+		return  catalogRepository.findAllCatalogByAuthor(author);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByTitle(Title title) {
-		return  catalogRepository.findBookByTitle(title);
+	public List<Catalog> findAllCatalogByTitle(Title title) {
+		return  catalogRepository.findAllCatalogByTitle(title);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPublishDate(PublishDate publishDate) {
-		return  catalogRepository.findBookByPublishDate(publishDate);
+	public List<Catalog> findAllCatalogByPublishDate(PublishDate publishDate) {
+		return catalogRepository.findAllCatalogByPublishDate(publishDate);
+	}
+
+
+	@Override
+	public List<Catalog> findAllCatalogByPublishigHouse(PublishingHouse publishingHouse) {
+		return  catalogRepository.findAllCatalogByPublishigHouse(publishingHouse);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPublishigHouse(PublishingHouse publishingHouse) {
-		return catalogRepository.findBookByPublishigHouse(publishingHouse);
+	public List<Catalog> findAllCatalogByLanguage(Language language) {
+		return  catalogRepository.findAllCatalogByLanguage(language);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByLanguage(Language language) {
-		return catalogRepository.findBookByLanguage(language);
+	public List<Catalog> findAllCatalogByType(Type type) {
+		return catalogRepository.findAllCatalogByType(type);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByType(Type type) {
-		return catalogRepository.findBookByType(type);
-		
+	public List<Catalog> findAllCatalogByTopic(Topic topic) {
+		return catalogRepository.findAllCatalogByTopic(topic);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByTopic(Topic topic) {
-		return catalogRepository.findBookByTopic(topic);
+	public List<Catalog> findAllCatalogByUseTarget(UseTarget useTarget) {
+		return catalogRepository.findAllCatalogByUseTarget(useTarget);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByUseTarget(UseTarget useTarget) {
-		return catalogRepository.findBookByUseTarget(useTarget);
+	public List<Catalog> findAllCatalogByPeriodical(Periodical periodical) {
+		return catalogRepository.findAllCatalogByPeriodical(periodical);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPeriodical(Periodical periodical) {
-		return catalogRepository.findBookByPeriodical(periodical);
+	public List<Catalog> findAllCatalogByAvailable(Available available) {
+		return catalogRepository.findAllCatalogByAvailable(available);
 	}
 
 	@Override
-	public Optional<Catalog> findBookByAvailable(Available available) {
-		return catalogRepository.findBookByAvailable(available);
-	}
-
-	@Override
-	public Optional<Catalog> findBookByBookId(BookId bookId) {
+	public Optional<Catalog> findCatalogByBookId(BookId bookId) {
 	
-		return catalogRepository.findBookByBookId(bookId);
+		return catalogRepository.findCatalogByBookId(bookId);
 	}
-
-	
-
-	
-
 }

@@ -139,6 +139,7 @@ public class CatalogRepositorySpringDataMongoAdapter implements CatalogRepositor
 	public Optional<Catalog> findBookByAvailable(Available available) {
 		var catalogDocument = catalogDocumentRepository.findBookByAvailable(available);
 		return Optional.of(modelMapper.map(catalogDocument, Catalog.class));
+		
 	}
 
 	

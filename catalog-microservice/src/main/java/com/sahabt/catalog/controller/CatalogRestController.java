@@ -1,5 +1,7 @@
 package com.sahabt.catalog.controller;
 
+import java.util.List;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,10 +12,16 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import com.sahabt.catalog.dto.response.CatalogResponse;
 import com.sahabt.catalog.service.CatalogService;
+import com.sahabt.library.domain.catalog.Author;
 import com.sahabt.library.domain.catalog.Available;
+import com.sahabt.library.domain.catalog.BookId;
+import com.sahabt.library.domain.catalog.Catalog;
+import com.sahabt.library.domain.catalog.ISBN;
 import com.sahabt.library.domain.catalog.Language;
 import com.sahabt.library.domain.catalog.Periodical;
 import com.sahabt.library.domain.catalog.PublishDate;
+import com.sahabt.library.domain.catalog.PublishingHouse;
+import com.sahabt.library.domain.catalog.Title;
 import com.sahabt.library.domain.catalog.Topic;
 import com.sahabt.library.domain.catalog.Type;
 import com.sahabt.library.domain.catalog.UseTarget;
@@ -38,62 +46,62 @@ public class CatalogRestController {
 	}
 
 	@GetMapping
-	public CatalogResponse findBookByBookId(int bookId) {
-		return catalogService.findBookByBookId(bookId);
+	public Catalog findCatalogByBookId(BookId bookId) {
+		return catalogService.findCatalogByBookId(bookId);
 	}
 	
 	@GetMapping 
-	public CatalogResponse findBookByIsbn(String isbn) {
-		return catalogService.findBookByIsbn(isbn);
+	public List<Catalog> findAllCatalogByIsbn(ISBN isbn) {
+		return catalogService.findAllCatalogByIsbn(isbn);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByAuthor(String firstName, String lastName) {
-		return catalogService.findBookByAuthor(firstName, lastName);
+	public List<Catalog> findAllCatalogByAuthor(Author author) {
+		return catalogService.findAllCatalogByAuthor(author);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByTitle(String title) {
-		return catalogService.findBookByTitle(title);
+	public List<Catalog> findAllCatalogByTitle(Title title) {
+		return catalogService.findAllCatalogByTitle(title);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByPublishDate(PublishDate publishDate) {
-		return catalogService.findBookByPublishDate(publishDate);
+	public List<Catalog> findAllCatalogByPublishDate(PublishDate publishDate) {
+		return catalogService.findAllCatalogByPublishDate(publishDate);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByPublishigHouse(String publishingHouseName) {
-		return catalogService.findBookByPublishigHouse(publishingHouseName);
+	public List<Catalog> findAllCatalogByPublishigHouse(PublishingHouse publishingHouseName) {
+		return catalogService.findAllCatalogByPublishigHouse(publishingHouseName);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByLanguage(Language language) {
-		return catalogService.findBookByLanguage(language);
+	public List<Catalog> findAllCatalogByLanguage(Language language) {
+		return catalogService.findAllCatalogByLanguage(language);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByType(Type type) {
-		return catalogService.findBookByType(type);
+	public List<Catalog> findAllCatalogByType(Type type) {
+		return catalogService.findAllCatalogByType(type);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByTopic(Topic topic) {
-		return catalogService.findBookByTopic(topic);
+	public List<Catalog> findAllCatalogByTopic(Topic topic) {
+		return catalogService.findAllCatalogByTopic(topic);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByUseTarget(UseTarget useTarget) {
-		return catalogService.findBookByUseTarget(useTarget);
+	public List<Catalog> findAllCatalogByUseTarget(UseTarget useTarget) {
+		return catalogService.findAllCatalogByUseTarget(useTarget);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByPeriodical(Periodical periodical) {
-		return catalogService.findBookByPeriodical(periodical);
+	public List<Catalog> findAllCatalogByPeriodical(Periodical periodical) {
+		return catalogService.findAllCatalogByPeriodical(periodical);
 	}
 	
 	@GetMapping
-	public CatalogResponse findBookByAvailable(Available available) {
-		return catalogService.findBookByAvailable(available);
+	public List<Catalog> findAllCatalogByAvailable(Available available) {
+		return catalogService.findAllCatalogByAvailable(available);
 	}
 }
