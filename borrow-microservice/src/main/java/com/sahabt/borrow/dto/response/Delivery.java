@@ -1,10 +1,10 @@
-package com.sahabt.borrow.document;
+package com.sahabt.borrow.dto.response;
 
-public class Deadline {
+public class Delivery {
 	private int day;
 	private int mount;
 	private int year;
-	public Deadline() {
+	public Delivery() {
 
 	}
 	public int getDay() {
@@ -27,9 +27,8 @@ public class Deadline {
 	}
 	@Override
 	public String toString() {
-		return "Deadline [day=" + day + ", mount=" + mount + ", year=" + year + "]";
+		return "Delivery [day=" + day + ", mount=" + mount + ", year=" + year + "]";
 	}
-	
 	
 	
 	

@@ -61,21 +61,35 @@ public class BorrowRepositorySpringDataMongoAdapter implements BorrowRepository{
 	
 	@Override
 	public Optional<List<Borrow>> findBorrowsByIdentityNo(IdentityNo identity) {
-		var borrowDocument = borrowDocumentRepository.findAllBorrowByIdentity(identity.getIdentityNo());
+		var borrowDocument = borrowDocumentRepository.findAllBorrowByIdentity(identity.getIdentityNo())
+				.stream()
+				.map(b-> modelMapper.map(b, Borrow.class))
+				.toList();
 		if (borrowDocument.isEmpty())
 			return Optional.empty();
-		return Optional.of(modelMapper.map(borrowDocument.get(0), List<Borrow>.class));
+		return Optional.of(borrowDocument);
 	}
 	
 	
 
 	@Override
 	public Optional<List<Borrow>> getAllBorrows() {
-		var borrowDocument = borrowDocumentRepository.findAll();
+		var borrowDocument = borrowDocumentRepository.findAll()
+				.stream()
+				.map(b-> modelMapper.map(b, Borrow.class))
+				.toList();
 		if (borrowDocument.isEmpty())
 			return Optional.empty();
-		return Optional.of(modelMapper.map(borrowDocument.get(0), Borrow.class));
+		return Optional.of(borrowDocument);
+		
 	}
+//	public List<Borrow> getAllBorrows() {
+//
+//		return borrowDocumentRepository.findAll()
+//				.stream()
+//				.map(b-> modelMapper.map(b, Borrow.class))
+//				.toList();		
+//	}
 	
 
 }

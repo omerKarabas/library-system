@@ -96,7 +96,7 @@ public class Borrow {
 			return this;
 		}
 		
-		public Builder borrowId(String borrowId) {
+		public Builder borrowId(int borrowId) {
 			this.borrowId = BorrowId.of(borrowId);
 			return this;
 		}

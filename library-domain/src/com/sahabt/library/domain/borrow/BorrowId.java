@@ -7,17 +7,17 @@ import com.sahabt.library.domain.annotations.ValueObject;
 @ValueObject
 public final class BorrowId {
  
-	private String id;
+	private int id;
 
-	public static BorrowId of(String borrowId) {
+	public static BorrowId of(int borrowId) {
 		return new BorrowId(borrowId);
 	}
-	private BorrowId(String borrowId) {
+	private BorrowId(int borrowId) {
 		super();
 		this.id = borrowId;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

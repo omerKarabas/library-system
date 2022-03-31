@@ -1,81 +1,96 @@
 package com.sahabt.borrow.config;
 
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.sahabt.borrow.document.BorrowDocument;
+import com.sahabt.borrow.dto.request.AddBorrowRequest;
+import com.sahabt.borrow.dto.response.BorrowResponse;
+import com.sahabt.library.domain.borrow.BookId;
+import com.sahabt.library.domain.borrow.Borrow;
+import com.sahabt.library.domain.borrow.BorrowCounter;
+import com.sahabt.library.domain.borrow.BorrowId;
+import com.sahabt.library.domain.borrow.Deadline;
+import com.sahabt.library.domain.borrow.Delivery;
+import com.sahabt.library.domain.borrow.Punishment;
+import com.sahabt.library.domain.user.IdentityNo;
+
+
+
 @Configuration
 public class ModelMapperConfig {
-//	private static final Converter<HireEmployeeRequest,Employee>
-//	HIRE_EMPLOYEE_REQUEST_TO_EMPLOYEE_CONVERTER = (context) -> {
-//		var request = context.getSource();
-//		return new Employee.Builder(request.getIdentity())
-//				        .fullname(request.getFirstName(), request.getLastName())
-//				        .iban(request.getIban())
-//				        .salary(request.getSalary())
-//				        .jobStyle(request.getJobStyle())
-//				        .birthYear(request.getBirthYear())
-//				        .photo(request.getPhoto())
-//				        .department(request.getDepartment())
-//				        .build();
-//	};
-//	private static final Converter<EmployeeDocument,Employee>
-//	EMPLOYEE_DOCUMENT_TO_EMPLOYEE_CONVERTER = (context) -> {
-//		var document = context.getSource();
-//		return new Employee.Builder(document.getIdentity())
-//				.fullname(document.getFirstName(), document.getLastName())
-//				.iban(document.getIban())
-//				.salary(document.getSalary())
-//				.jobStyle(document.getJobStyle())
-//				.birthYear(document.getBirthYear())
-//				.photo(document.getPhoto())
-//				.department(document.getDepartment())
-//				.build();
-//	};
-//		private static final Converter<Employee,EmployeeResponse>
-//	EMPLOYEE_TO_EMPLOYEE_RESPONSE_CONVERTER = (context) -> {
-//		var employee = context.getSource();
-//		var fullname = employee.getFullname();
-//		var response = new EmployeeResponse();
-//		response.setIdentity(employee.getIdentity().getValue());
-//		response.setFirstName(fullname.getFirstName());
-//		response.setLastName(fullname.getLastName());
-//		response.setSalary(employee.getSalary().getValue());
-//		response.setIban(employee.getIban().value());
-//		response.setDepartment(employee.getDepartment());
-//		response.setPhoto(employee.getPhoto().getBase64Value());
-//		response.setBirthYear(employee.getBirthYear().getValue());
-//		response.setJobStyle(employee.getJobStyle());
-//		return response;
-//	};
-//		private static final Converter<Employee,EmployeeDocument>
-//	EMPLOYEE_TO_EMPLOYEE_DOCUMENT_CONVERTER = (context) -> {
-//		var employee = context.getSource();
-//		var fullname = employee.getFullname();
-//		var document = new EmployeeDocument();
-//		document.setIdentity(employee.getIdentity().getValue());
-//		document.setFirstName(fullname.getFirstName());
-//		document.setLastName(fullname.getLastName());
-//		document.setSalary(employee.getSalary().getValue());
-//		document.setIban(employee.getIban().value());
-//		document.setDepartment(employee.getDepartment());
-//		document.setPhoto(employee.getPhoto().getBase64Value());
-//		document.setBirthYear(employee.getBirthYear().getValue());
-//		document.setJobStyle(employee.getJobStyle());
-//		return document;
-//	};
+	private static final Converter<AddBorrowRequest,Borrow>
+	ADD_BORROW_REQUEST_TO_BORROW_CONVERTER = (context) -> {
+		var request = context.getSource();
+		return new Borrow.Builder()
+				        .borrowId(request.getBorrowId())
+				        .identityNo(request.getIdentity())
+				        .bookId(request.getBookId())
+				        //.deadline(request.getDeadline())
+				        //.date(request.getDate())
+				        .punishment(request.getPunishment())
+				        .borrowCounter(request.getBorrowCounter())
+				        .build();
+	};
 	
+	private static final Converter<BorrowDocument,Borrow>
+	BORROW_DOCUMENT_TO_BORROW_CONVERTER = (context) -> {
+		var document = context.getSource();
+		return new Borrow.Builder()
+				.borrowId(document.getBorrowId())
+				.identityNo(document.getIdentity())
+				.deadline(document.getDeadline().getDay(), document.getDeadline().getMount(), document.getDeadline().getYear())
+				.date(document.getDate().getDay(), document.getDate().getMount(), document.getDate().getYear())
+				.punishment(document.getPunishment())
+				.borrowCounter(document.getBorrowCounter())
+				.bookId(document.getBookId())
+				.build();
+	};
+
+		private static final Converter<Borrow,BorrowResponse>
+		BORROW_TO_BORROW_RESPONSE_CONVERTER = (context) -> {
+		var borrow = context.getSource();
+		var deadline= borrow.getDeadline();
+		
+		var response = new BorrowResponse();
+		response.setBorrowId(borrow.getBorrowId().getId());
+		response.setIdentity(borrow.getIdentityNo().getIdentityNo());
+		response.setBookId(borrow.getBookId().getBookId());
+		//response.setDeadline();
+		//response.setDate(borrow.getDate());
+		response.setPunishment(borrow.getPunishment().getPunishmentAmount());
+		response.setBorrowCounter(borrow.getBorrowCounter().getBorrowCounter());
+		return response;
+	};
+
+		private static final Converter<Borrow,BorrowDocument>
+		BORROW_TO_BORROW_DOCUMENT_CONVERTER = (context) -> {
+		var borrow = context.getSource();
+//		var fullname = employee.getFullname();
+		var document = new BorrowDocument();
+		document.setBorrowId(borrow.getBorrowId().getId());
+		document.setIdentity(borrow.getIdentityNo().getIdentityNo());
+		document.setBookId(borrow.getBookId().getBookId());
+		//document.setDeadline(borrow.getDeadline().getDay());
+		//document.setDate(null);
+		document.setPunishment(borrow.getPunishment().getPunishmentAmount());
+		document.setBorrowCounter(borrow.getBorrowCounter().getBorrowCounter());
+		return document;
+	};
+	private int borrowCounter;
 	@Bean
 	public ModelMapper modelMapper() {
 		var modelMapper = new ModelMapper();
-//		modelMapper.addConverter(HIRE_EMPLOYEE_REQUEST_TO_EMPLOYEE_CONVERTER, 
-//				HireEmployeeRequest.class, Employee.class);
-//		modelMapper.addConverter(EMPLOYEE_TO_EMPLOYEE_RESPONSE_CONVERTER, 
-//				Employee.class, EmployeeResponse.class);
-//		modelMapper.addConverter(EMPLOYEE_DOCUMENT_TO_EMPLOYEE_CONVERTER, 
-//				EmployeeDocument.class, Employee.class);
-//		modelMapper.addConverter(EMPLOYEE_TO_EMPLOYEE_DOCUMENT_CONVERTER, 
-//				Employee.class, EmployeeDocument.class);
+		modelMapper.addConverter(ADD_BORROW_REQUEST_TO_BORROW_CONVERTER, 
+				AddBorrowRequest.class, Borrow.class);
+		modelMapper.addConverter(BORROW_TO_BORROW_RESPONSE_CONVERTER, 
+				Borrow.class, BorrowResponse.class);
+		modelMapper.addConverter(BORROW_DOCUMENT_TO_BORROW_CONVERTER, 
+				BorrowDocument.class, Borrow.class);
+		modelMapper.addConverter(BORROW_TO_BORROW_DOCUMENT_CONVERTER, 
+				Borrow.class, BorrowDocument.class);
 		return modelMapper;
 	}
 }

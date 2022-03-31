@@ -1,4 +1,4 @@
-package com.sahabt.borrow.document;
+package com.sahabt.borrow.dto.request;
 
 public class Deadline {
 	private int day;

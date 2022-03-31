@@ -7,49 +7,39 @@ import com.sahabt.borrow.validation.TcKimlikNo;
 public class AddBorrowRequest {
 	
 	
-	private String borrowId;
+	private int borrowId;
 	@TcKimlikNo
 	private String identity;
 	@NotBlank
-	private String bookId;	
+	private int bookId;	
 	@NotBlank
-	private String deadline; 	
+	private Deadline deadline; 	
 	@NotBlank
-	private String date;	
+	private Delivery date;	
 	
 	private int punishment;
 	@NotBlank
 	private int borrowCounter;
 	public AddBorrowRequest() {
 	}
-	public String getBorrowId() {
-		return borrowId;
-	}
-	public void setBorrowId(String borrowId) {
-		this.borrowId = borrowId;
-	}
+
 	public String getIdentity() {
 		return identity;
 	}
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
-	public String getBookId() {
-		return bookId;
-	}
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
-	}
-	public String getDeadline() {
+
+	public Deadline getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(String deadline) {
+	public void setDeadline(Deadline deadline) {
 		this.deadline = deadline;
 	}
-	public String getDate() {
+	public Delivery getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Delivery date) {
 		this.date = date;
 	}
 	public int getPunishment() {
@@ -64,6 +54,22 @@ public class AddBorrowRequest {
 	public void setBorrowCounter(int borrowCounter) {
 		this.borrowCounter = borrowCounter;
 	}
+	public int getBorrowId() {
+		return borrowId;
+	}
+
+	public void setBorrowId(int borrowId) {
+		this.borrowId = borrowId;
+	}
+
+	public int getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+
 	@Override
 	public String toString() {
 		return "AddBorrowRequest [borrowId=" + borrowId + ", identity=" + identity + ", bookId=" + bookId
