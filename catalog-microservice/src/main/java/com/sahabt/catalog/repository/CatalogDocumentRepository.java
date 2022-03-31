@@ -17,7 +17,7 @@ import com.sahabt.library.domain.catalog.Topic;
 import com.sahabt.library.domain.catalog.Type;
 import com.sahabt.library.domain.catalog.UseTarget;
 
-public interface CatalogDocumentRepository extends MongoRepository<CatalogDocument,String> {
+public interface CatalogDocumentRepository extends MongoRepository<CatalogDocument,Integer> {
 	
 	boolean exists (BookId bookId);
 	
