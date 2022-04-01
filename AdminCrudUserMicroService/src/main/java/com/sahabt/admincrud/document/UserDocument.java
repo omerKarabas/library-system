@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import nonapi.io.github.classgraph.json.Id;
 
-@Document
+@Document(collection="users")
 public class UserDocument {
 
 	@Id

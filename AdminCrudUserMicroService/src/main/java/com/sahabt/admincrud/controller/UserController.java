@@ -36,7 +36,7 @@ public class UserController {
 		return userService.createUser(request);
 	}
 	
-	@GetMapping("/{identityNo}")
+	@GetMapping("{identityNo}")
 	public UserResponse deleteUser(@PathVariable String identityNo) {
 		System.out.println("burası controller:delete");
 		return userService.deleteUser(identityNo);

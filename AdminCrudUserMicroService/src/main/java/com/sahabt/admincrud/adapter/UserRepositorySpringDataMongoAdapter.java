@@ -3,6 +3,7 @@ package com.sahabt.admincrud.adapter;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
 import com.sahabt.admincrud.document.UserDocument;
@@ -11,6 +12,7 @@ import com.sahabt.library.domain.user.IdentityNo;
 import com.sahabt.library.domain.user.User;
 import com.sahabt.library.repository.UserRepository;
 
+@Component
 public class UserRepositorySpringDataMongoAdapter implements UserRepository {
 
 	private userDocumentRepository userDocumentRepository;
