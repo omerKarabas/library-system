@@ -1,5 +1,7 @@
 package com.sahabt.catalog.repository;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.sahabt.catalog.document.CatalogDocument;
@@ -23,16 +25,16 @@ public interface CatalogDocumentRepository extends MongoRepository<CatalogDocume
 	boolean exists (BookId bookId);
 	
 	CatalogResponse getInformationBook(BookId bookId);
-    Catalog findBookByIsbn(ISBN isbn);
-    Catalog findBookByBookId(BookId bookId);
-    Catalog findAllCatalogByAuthor(Author author);
-    Catalog findAllCatalogByTitle(Title title);
-    Catalog findAllCatalogByPublishDate(PublishDate publishDate);
-    Catalog findAllCatalogByPublishigHouse(PublishingHouse publishingHouse);
-    Catalog findAllCatalogByLanguage(Language language);
-    Catalog findAllCatalogByType(Type type);
-    Catalog findAllCatalogByTopic(Topic topic);
-    Catalog findAllCatalogByUseTarget(UseTarget useTarget);
-    Catalog findAllCatalogByPeriodical(Periodical periodical);
-    Catalog findAllCatalogByAvailable(Available available);
+	List<Catalog> findAllCatalogByIsbn(ISBN isbn);
+    Catalog findCatalogByBookId(BookId bookId);
+    List<Catalog> findAllCatalogByAuthor(Author author);
+    List<Catalog> findAllCatalogByTitle(Title title);
+    List<Catalog> findAllCatalogByPublishDate(PublishDate publishDate);
+    List<Catalog> findAllCatalogByPublishigHouse(PublishingHouse publishingHouse);
+    List<Catalog> findAllCatalogByLanguage(Language language);
+    List<Catalog> findAllCatalogByType(Type type);
+    List<Catalog> findAllCatalogByTopic(Topic topic);
+    List<Catalog> findAllCatalogByUseTarget(UseTarget useTarget);
+    List<Catalog> findAllCatalogByPeriodical(Periodical periodical);
+    List<Catalog> findAllCatalogByAvailable(Available available);
 }

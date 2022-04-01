@@ -1,6 +1,5 @@
 package com.sahabt.catalog.controller;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +22,7 @@ import com.sahabt.library.domain.catalog.Type;
 import com.sahabt.library.domain.catalog.UseTarget;
 import com.sahabt.library.repository.CatalogRepository;
 
-public class CatalogRepositorySpringDataMongoAdapter implements CatalogRepository{
+public class CatalogRepositorySpringDataMongoAdapter implements CatalogRepository {
 
 	private CatalogDocumentRepository catalogDocumentRepository;
 	private ModelMapper modelMapper;
@@ -50,10 +49,9 @@ public class CatalogRepositorySpringDataMongoAdapter implements CatalogRepositor
 
 	@Override
 	public Optional<Catalog> removeCatalog(BookId bookId) {
-		var catalogDocument = catalogDocumentRepository.findBookByBookId(bookId);
-		var document = catalogDocument.getClass(); 
-		catalogDocumentRepository.delete(catalogDocument);
-		return Optional.of(modelMapper.map(document, Catalog.class));
+		var catalog = catalogDocumentRepository.findCatalogByBookId(bookId);
+		catalogDocumentRepository.delete(modelMapper.map(catalog, CatalogDocument.class));
+		return Optional.of(catalog);
 	}
 
 	@Override
@@ -69,80 +67,96 @@ public class CatalogRepositorySpringDataMongoAdapter implements CatalogRepositor
 	}
 
 	@Override
-	public Optional<Catalog> findBookByIsbn(ISBN isbn) {
-		//var document = catalogDocumentRepository.findBookByIsbn(isbn.getValue());
-		//if(document.is)
-		return null;
+	public List<Catalog> findAllCatalogByIsbn(ISBN isbn) {
+		return   catalogDocumentRepository.findAllCatalogByIsbn(isbn)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByBookId(BookId bookId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Catalog> findCatalogByBookId(BookId bookId) {
+		return Optional.of(catalogDocumentRepository.findCatalogByBookId(bookId));
 	}
 
 	@Override
-	public Optional<Catalog> findBookByAuthor(Author author) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Catalog> findAllCatalogByAuthor(Author author) {
+		return   catalogDocumentRepository.findAllCatalogByAuthor(author)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByTitle(Title title) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Catalog> findAllCatalogByTitle(Title title) {
+		return   catalogDocumentRepository.findAllCatalogByTitle(title)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPublishDate(PublishDate publishDate) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Catalog> findAllCatalogByPublishDate(PublishDate publishDate) {
+		return   catalogDocumentRepository.findAllCatalogByPublishDate(publishDate)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPublishigHouse(PublishingHouse publishingHouse) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Catalog> findAllCatalogByPublishigHouse(PublishingHouse publishingHouse) {
+		return   catalogDocumentRepository.findAllCatalogByPublishigHouse(publishingHouse)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByLanguage(Language language) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Catalog> findAllCatalogByLanguage(Language language) {
+		return   catalogDocumentRepository.findAllCatalogByLanguage(language)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByType(Type type) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Catalog> findAllCatalogByType(Type type) {
+		return   catalogDocumentRepository.findAllCatalogByType(type)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByTopic(Topic topic) {
-		var catalogDocument= catalogDocumentRepository.findBookByTopic(topic);
-		return Optional.of(modelMapper.map(catalogDocument, Catalog.class));
+	public List<Catalog> findAllCatalogByTopic(Topic topic) {
+		return   catalogDocumentRepository.findAllCatalogByTopic(topic)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByUseTarget(UseTarget useTarget) {
-		var catalogDocument = catalogDocumentRepository.findBookByUseTarget(useTarget);
-		return Optional.of(modelMapper.map(catalogDocument, Catalog.class));
+	public List<Catalog> findAllCatalogByUseTarget(UseTarget useTarget) {
+		return   catalogDocumentRepository.findAllCatalogByUseTarget(useTarget)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
 
 	@Override
-	public Optional<Catalog> findBookByPeriodical(Periodical periodical) {
-		var catalogDocument = catalogDocumentRepository.findBookByPeriodical(periodical);
-		return Optional.of(modelMapper.map(catalogDocument, Catalog.class));
+	public List<Catalog> findAllCatalogByPeriodical(Periodical periodical) {
+		return   catalogDocumentRepository.findAllCatalogByPeriodical(periodical)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
 	}
-
-	@Override
-	public Optional<Catalog> findBookByAvailable(Available available) {
-		var catalogDocument = catalogDocumentRepository.findBookByAvailable(available);
-		return Optional.of(modelMapper.map(catalogDocument, Catalog.class));
-		
-	}
-
 	
-	
-	
+	@Override
+	public List<Catalog> findAllCatalogByAvailable(Available available) {
+		return   catalogDocumentRepository.findAllCatalogByAvailable(available)
+				.stream()
+				.map(cat ->modelMapper.map(cat, Catalog.class))
+				.toList();
+	}
+
 }
